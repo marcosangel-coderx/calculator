@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out;
+}
+
+
+/* Print Styles */
+@media print {
+  /* Hide non-printable elements */
+  .no-print {
+    display: none !important;
+  }
+  
+  /* Page setup */
+  @page {
+    size: auto;
+    margin: 15mm;
+  }
+  
+  /* Prevent blank pages */
+  html, body {
+    height: auto !important;
+    overflow: visible !important;
+    background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  /* Print content container */
+  .print-content {
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    max-width: none !important;
+    max-height: none !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    page-break-after: avoid !important;
+  }
+  
+  /* Prevent page breaks inside elements */
+  .print-content > div {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+  
+  table {
+    page-break-inside: avoid !important;
+  }
+  
+  tr, td, th {
+    page-break-inside: avoid !important;
+  }
+  
+  /* Remove fixed positioning */
+  .fixed {
+    position: static !important;
+  }
+  
+  /* Remove blur effects */
+  .backdrop-blur-sm {
+    backdrop-filter: none !important;
+  }
+  
+  /* Remove dark backgrounds */
+  .bg-black {
+    background: transparent !important;
+  }
+  
+  /* Ensure content fits on one page */
+  * {
+    overflow: visible !important;
+  }
+}
